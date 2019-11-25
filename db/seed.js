@@ -1,7 +1,7 @@
 
 // const Products = require('./models.js');
 // const db = require('./index.js');
-
+const helper = require('./dbhelpers')
 // Fill in the definition of insertMockData so that when 
 // this file is run in the terminal with `node seed.js`, 
 // all 10 products are inserted into the database
@@ -33,6 +33,17 @@ const createProducts = () => {
 
 const insertMockData = function() {
   // Complete me please
+  let products = createProducts();
+  for (let i = 0; i < products.length; i++) {
+    helper.postProductsHelper(products[i], (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+      }
+    });
+  }
+
 };
 
 // NOTE: DO NOT invoke this function as part of your
